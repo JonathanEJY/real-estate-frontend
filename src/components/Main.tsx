@@ -7,8 +7,8 @@ export default function Main() {
   const [houses, setHouses] = useState<House[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedRooms, setSelectedRooms] = useState<number | null>(null);
-  const [allHouses, setAllHouses] = useState<House[]>([]);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  // const [allHouses, setAllHouses] = useState<House[]>([]);
+  // const [selectedType, setSelectedType] = useState<string | null>(null);
 
   useEffect(() => {
     async function getHouses() {
@@ -17,7 +17,7 @@ export default function Main() {
           "https://real-estate-backend-bxzf.onrender.com/#",
         );
         setHouses(houses.data);
-        setAllHouses(houses.data);
+        // setAllHouses(houses.data);
       } catch (e) {
         console.log("Error while getting houses: " + e);
       } finally {
@@ -49,6 +49,7 @@ export default function Main() {
             <div>
               <span className="mr-4 font-semibold text-gray-400">Rooms</span>
               <button
+                onClick={() => setSelectedRooms(4)}
                 className={`rounded-md p-3 font-semibold hover:cursor-pointer ${
                   selectedRooms === 4 ? "bg-gray-300" : "hover:bg-gray-200"
                 }`}
@@ -56,6 +57,7 @@ export default function Main() {
                 {"+ 4"}
               </button>
               <button
+                onClick={() => setSelectedRooms(5)}
                 className={`rounded-md p-3 font-semibold hover:cursor-pointer ${
                   selectedRooms === 5 ? "bg-gray-300" : "hover:bg-gray-200"
                 }`}
@@ -63,6 +65,7 @@ export default function Main() {
                 {"+ 5"}
               </button>
               <button
+                onClick={() => setSelectedRooms(6)}
                 className={`rounded-md p-3 font-semibold hover:cursor-pointer ${
                   selectedRooms === 6 ? "bg-gray-300" : "hover:bg-gray-200"
                 }`}
