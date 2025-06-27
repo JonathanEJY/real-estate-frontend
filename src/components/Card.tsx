@@ -7,8 +7,23 @@ import {
 import type { House } from "../types";
 interface CardProps {
   houses: House[];
+  loading: boolean;
 }
-export default function Card({ houses }: CardProps) {
+export default function Card({ houses, loading }: CardProps) {
+  if (loading) {
+    return (
+      <>
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="flex w-52 animate-pulse flex-col gap-4">
+            <div className="skeleton h-32 w-full rounded-xl bg-gray-300"></div>
+            <div className="skeleton h-4 w-28 rounded bg-gray-300"></div>
+            <div className="skeleton h-4 w-full rounded bg-gray-300"></div>
+            <div className="skeleton h-4 w-full rounded bg-gray-300"></div>
+          </div>
+        ))}
+      </>
+    );
+  }
   return (
     <>
       {houses.map((house) => (
@@ -55,11 +70,11 @@ export default function Card({ houses }: CardProps) {
               </div>
             </div>
           </div>
-          <div className="">
-            <span className="text-sm font-semibold text-neutral-500">
-              {house.description}
-            </span>
-          </div>
+
+          <span className="text-sm font-semibold text-neutral-500">
+            {house.description}
+          </span>
+
           <div className="flex w-fit rounded-full bg-gray-200">
             <div className="flex rounded-l-full bg-gray-200 px-3 py-2 hover:cursor-pointer hover:bg-gray-300">
               <ThumbsUpIcon className="h-5 w-5 text-neutral-700" />

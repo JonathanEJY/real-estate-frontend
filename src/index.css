@@ -20,3 +20,9 @@
   --color-test: #7f6aff;
   --font-roboto: "Roboto", "sans";
 }
+
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --cupcake;
+}
